@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Generator</title>
+    <style>
+      .number {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 2px;
+        font-size: 16px;
+        border-radius: 4px;
+      }
+      .even {
+        background-color: green;
+        color: white;
+      }
+      .odd {
+        background-color: yellow;
+        color: black;
+      }
+      .prime {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script>
+      const container = document.getElementById("container");
+
+      function isPrime(num) {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      }
+
+      for (let i = 0; i <= 100; i++) {
+        const numberDiv = document.createElement("div");
+        numberDiv.textContent = i;
+        numberDiv.classList.add("number"); // this mean apply the css style to all number which is found in the numberdiv
+
+        if (i % 2 === 0) {
+          numberDiv.classList.add("even");
+        } else {
+          numberDiv.classList.add("odd");
+        }
+
+        if (isPrime(i)) {
+          numberDiv.classList.add("prime");
+        }
+
+        container.appendChild(numberDiv);
+      }
+    </script>
+  </body>
+</html>
